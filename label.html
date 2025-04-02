@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+{% block head %}
+<title>Bus System</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+
+    <h1>Choose The Desired City</h1>
+    
+    <form id="script" method="post">
+        {% for city in route_parts %}
+            <input type="submit" name="city" id="city" value="{{ city }}" >
+        {% endfor %}
+    </form>
+
+    {% if clients_info %}
+        <h2>Clients' Destination Indices</h2>
+        <table>
+            <tr>
+                <th>Client Seat Number</th>
+                <th>To Location</th>
+                <th>Route Index</th>
+            </tr>
+            {% for info in clients_info %}
+                <tr>
+                    <td>{{ info.seat_number }}</td>
+                    <td>{{ info.to_location }}</td>
+                    <td>{{ info.index }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+</div>
+
+{% endblock %}

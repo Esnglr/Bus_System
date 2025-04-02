@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Bus System</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="content">
+    
+    <h1>Choose The Desired Action</h1>
+    
+    <form id="redirect-form" method="get">
+        <input type="button" value="Enter a Client" onclick="redirect('enter')">
+        <input type="button" value="Enter a Route" onclick="redirect('enter_route')">
+        <input type="button" value="Take a Script" onclick="redirect('label')">
+    </form>
+
+</div>
+
+<script>
+    function redirect(action){
+        const form = document.getElementById("redirect-form");
+
+        if(action == 'enter'){
+            form.action = "{{url_for('enter')}}";
+
+        }else if (action == 'enter_route'){
+            form.action = "{{url_for('enter_route')}}";
+        }else if (action == 'label'){
+            form.action = "{{url_for('label')}}";
+        }
+        form.method = "GET"
+        form.submit()
+    }
+</script>
+
+{% endblock %}
